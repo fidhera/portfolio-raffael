@@ -122,7 +122,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Gambar Rumah Kuno */}
         <img 
-            src="/assets/ancient_house.png" 
+            src="/assets/ancient_house.webp" 
             className="w-full h-full object-cover opacity-30 mix-blend-luminosity will-change-transform" // Optimization
             alt="Background" 
         />
@@ -232,11 +232,11 @@ const Hero = () => {
             </div>
 
             {/* SOCIAL ICONS */}
-            <div className="flex gap-6 items-center">
+            {/* <div className="flex gap-6 items-center">
                 <a href="#" className="text-2xl text-gray-400 hover:text-white hover:scale-125 transition-transform duration-300"><FaGithub /></a>
                 <a href="#" className="text-2xl text-gray-400 hover:text-pink-500 hover:scale-125 transition-transform duration-300"><FaInstagram /></a>
                 <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 hover:scale-125 transition-transform duration-300"><FaLinkedin /></a>
-            </div>
+            </div> */}
         </motion.div>
 
         {/* --- KOLOM KANAN: FOTO PROFIL --- */}
@@ -252,7 +252,8 @@ const Hero = () => {
             {/* Foto Profil */}
             <div className="relative">
                 <img 
-                    src="/assets/profile.png" 
+                    loading="lazy"
+                    src="/assets/profile/profile.webp" 
                     alt="Raffael Fidhera" 
                     className="w-[280px] md:w-[320px] object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative z-10 hover:scale-[1.02] transition-transform duration-500" 
                 />

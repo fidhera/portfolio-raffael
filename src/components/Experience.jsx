@@ -4,11 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaBriefcase, FaCalendarAlt, FaTimes, FaChevronRight, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 
-// --- DATA PENGALAMAN (DARI CV & DUMMY) ---
+// --- DATA PENGALAMAN (UPDATED REVISI) ---
 const experiences = [
-  // 1. ASLAB SISFO (PRIORITY)
+  // =================================================================
+  // 3 TERATAS (DITAMPILKAN AWAL)
+  // =================================================================
+  
+  // 1. ASLAB SISFO
   {
-    id: 3, // ID Asli
+    id: 1,
     // role: "Asisten Lab Sistem Informasi",
     role: "Information Systems Lab Assistant",
     company: "Universitas Gunadarma",
@@ -16,156 +20,231 @@ const experiences = [
     period: "March 2025 - Present",
     type: "Work",
     desc: [
-      // "Bertanggung jawab sebagai Tutor Praktikum untuk mata kuliah terkait Sistem Informasi.",
-      "Responsible as a Practicum Tutor for Information Systems related courses.",
-      // "Membantu dosen dalam pengelolaan kelas dan penilaian praktikum.",
-      "Assisting lecturers in class management and practicum grading.",
-      // "Mengembangkan materi pembelajaran praktis untuk mahasiswa."
-      "Developing practical learning materials for students."
+      // "Berkontribusi sebagai bagian dalam Laboratorium Sistem Informasi di Universitas Gunadarma.",
+      "Contributing as an integral part of the Information Systems Laboratory at Gunadarma University.",
+      // "Tugas utama menjadi Tutor Praktikum dan Asisten Praktikum.",
+      "Serving as a Practicum Tutor and Assistant, guiding students through technical coursework and practical exams."
     ],
     color: "from-cyan-500 to-blue-600"
   },
-  // 2. BEM FTI (PRIORITY)
+
+  // 2. BEM FTI
   {
     id: 2,
-    // role: "Staff Adkesma",
-    role: "Student Advocacy Staff",
-    company: "BEM FTI Universitas Gunadarma",
-    // period: "Nov 2024 - Sekarang",
+    // role: "Badan Eksekutif Mahasiswa FTI",
+    role: "Student Executive Board (BEM) FTI",
+    company: "Universitas Gunadarma",
+    // period: "November 2024 - Sekarang",
     period: "Nov 2024 - Present",
     type: "Organization",
     desc: [
-      // "Menangani advokasi dan kesejahteraan mahasiswa FTI dengan fokus pada layanan akademik.",
-      "Handling advocacy and welfare of FTI students with a focus on academic services.",
-      // "Menjadi jembatan komunikasi aktif antara mahasiswa dan birokrasi kampus.",
-      "Acting as an active communication bridge between students and campus bureaucracy.",
-      // "Memastikan pemenuhan hak dan fasilitas mahasiswa secara optimal."
-      "Ensuring optimal fulfillment of student rights and facilities."
+      // "Berkontribusi dalam departemen advokasi dan kesejahteraan mahasiswa dengan fokus pada layanan, fasilitas, dan kebijakan akademik.",
+      "Contributing to the Advocacy and Student Welfare department, focusing on academic services, facilities, and policies.",
+      // "Mengedepankan nilai aktif, responsif, dan solutif dalam memberikan solusi terhadap permasalahan mahasiswa.",
+      "Prioritizing active, responsive, and solution-oriented approaches to resolve student issues.",
+      // "Memastikan hak dan kesejahteraan mahasiswa FTI UG terpenuhi secara optimal.",
+      "Ensuring the rights and welfare of FTI UG students are optimally fulfilled."
     ],
     color: "from-purple-500 to-pink-500"
   },
-  // 3. SXC SUMMIT (PRIORITY)
+
+  // 3. SXC SUMMIT
   {
-    id: 4,
-    // role: "IT Division (Fullstack)",
-    role: "IT Division (Fullstack)",
-    company: "StudentsxCEOs Summit",
+    id: 3,
+    // role: "StudentsxCEOs International Summit",
+    role: "UI/UX & Backend Developer",
+    company: "StudentsxCEOs International Summit",
     // period: "Juli 2025 - Sekarang",
     period: "July 2025 - Present",
-    type: "Committee",
+    type: "Organization",
     desc: [
-      // "Membangun antarmuka (UI/UX) Website Event menggunakan Figma.",
-      "Building Event Website interface (UI/UX) using Figma.",
-      // "Developing backend sistem pendaftaran & tiket dengan Laravel & MySQL.",
-      "Developing registration & ticketing backend system with Laravel & MySQL.",
-      // "Mengelola traffic event hingga 1000+ user dengan performa stabil."
-      "Managing event traffic of up to 1000+ users with stable performance."
+      // "Bertugas membuat tampilan antarmuka (UI/UX) pada halaman utama dan event page menggunakan Figma.",
+      "Designing high-fidelity UI/UX for the main landing page and event pages using Figma.",
+      // "Mendevelop backend untuk sistem pendaftaran peserta dan pengelolaan tiket menggunakan Laravel dan MySQL.",
+      "Developing backend systems for participant registration and ticketing management using Laravel and MySQL.",
+      // "Berhasil mengelola trafik pengunjung event hingga 1000+ user dengan responsivitas tinggi.",
+      "Successfully managing high-traffic event data (1000+ users) with optimized responsiveness."
     ],
     color: "from-emerald-400 to-cyan-500"
   },
-  // --- SHOW MORE ITEMS START HERE ---
+
+  // =================================================================
+  // SHOW MORE ITEMS (DITAMPILKAN SAAT KLIK TOMBOL)
+  // =================================================================
+
   // 4. ASLAB HPC
   {
-    id: 1,
-    // role: "Asisten Lab HPC",
+    id: 4,
+    // role: "Asisten Lab HPC (High Performance Computing)",
     role: "HPC Lab Assistant",
     company: "Universitas Gunadarma",
-    // period: "Sept 2024 - Nov 2024",
-    period: "Sept 2024 - Nov 2024",
+    // period: "September 2024 – November 2024",
+    period: "Sept 2024 – Nov 2024",
     type: "Work",
     desc: [
-      // "Mengelola dan mendukung kegiatan pembelajaran pemrograman High Performance Computing (HPC).",
-      "Managing and supporting High Performance Computing (HPC) programming learning activities.",
-      // "Memberikan asistensi teknis real-time kepada mahasiswa dalam simulasi berbasis HPC.",
-      "Providing real-time technical assistance to students in HPC-based simulations.",
-      // "Melakukan troubleshooting masalah teknis melalui platform live chat."
-      "Troubleshooting technical issues via live chat platform."
+      // "Mengelola dan mendukung kegiatan pembelajaran di balik layar, khususnya dalam pemrograman HPC.",
+      "Managing and supporting backend learning activities, specifically in High Performance Computing (HPC) programming.",
+      // "Berperan sebagai penyedia asistensi teknis untuk mahasiswa, termasuk membantu simulasi berbasis HPC.",
+      "Providing technical assistance for students, including support for HPC-based simulations.",
+      // "Pemecahan masalah secara real-time melalui platform live chat.",
+      "Conducting real-time troubleshooting and problem-solving via live chat platforms."
     ],
-    color: "from-blue-500 to-cyan-500"
+    color: "from-blue-600 to-indigo-600"
   },
-  // 5. GUNADARMA MENGABDI
+
+  // 5. TIM KORSA
   {
     id: 5,
-    // role: "Logistik Pembangunan",
-    role: "Construction Logistics",
-    company: "Gunadarma Mengabdi 10",
-    // period: "Februari 2025",
-    period: "February 2025",
-    type: "Volunteer",
+    // role: "Tim Korsa – Badan Semi Otonom BEM FTI UG",
+    role: "Fuel Engine Division",
+    company: "Tim Korsa Universitas Gunadarma",
+    // period: "Juli 2025 – Sekarang",
+    period: "July 2025 – Present",
+    type: "Team",
     desc: [
-      // "Penanggung jawab logistik pembangunan sarana edukasi di lokasi pengabdian.",
-      "Person in charge of logistics for educational facility construction at the service location.",
-      // "Mengelola distribusi 20+ jenis alat dan material konstruksi.",
-      "Managing distribution of 20+ types of construction tools and materials.",
-      // "Mengawasi keamanan aset dan kelancaran teknis di lapangan."
-      "Overseeing asset security and technical smooth operation in the field."
+      // "Bertugas dan berkontribusi dalam perkembangan divisi Fuel Engine Remote Control.",
+      "Contributing to the development of the Fuel Engine Remote Control division.",
+      // "Untuk tujuan lomba KKI (Kontes Kapal Indonesia).",
+      "Preparing technical mechanics for the Indonesian Ship Contest (KKI/Kontes Kapal Indonesia)."
     ],
-    color: "from-orange-400 to-red-500"
+    color: "from-red-500 to-orange-500"
   },
-  // 6. TECH CAREER EXPO
+
+  // 6. TECH CAREER EXPO (VOLUNTEER)
   {
     id: 6,
-    // role: "Wakil Ketua Media Kreatif",
+    // role: "Wakil Ketua Divisi Media Kreatif",
     role: "Vice Head of Creative Media",
     company: "TechCareer Expo 2025",
-    // period: "Mei 2025",
-    period: "May 2025",
+    // period: "Februari 2025 - Mei 2025",
+    period: "Feb 2025 - May 2025",
     type: "Volunteer",
     desc: [
-      // "Memimpin tim desain memproduksi 10+ konten visual dan backdrop.",
-      "Leading design team producing 10+ visual contents and backdrops.",
-      // "Koordinasi produksi video highlight & promosi (Canva & CapCut).",
-      "Coordinating highlight & promotional video production (Canva & CapCut).",
-      // "Mengatur timeline publikasi media sosial selama 4 minggu pre-event."
-      "Managing social media publication timeline for 4 weeks pre-event."
+      // "Mengelola tim desain yang menghasilkan 10+ konten untuk media sosial, cetak, dan backdrop acara.",
+      "Leading the design team to produce 10+ creative assets for social media, print, and event backdrops.",
+      // "Mengoordinasikan produksi video highlight dan konten promosi event menggunakan Canva & CapCut.",
+      "Coordinating the production of highlight videos and promotional content using Canva & CapCut.",
+      // "Mengawasi timeline rilis konten sosial media secara rutin selama 4 minggu sebelum acara.",
+      "Overseeing the social media content release timeline for 4 weeks pre-event."
     ],
-    color: "from-indigo-400 to-purple-500"
+    color: "from-fuchsia-500 to-purple-600"
   },
-  // 7. DUMMY VOLUNTEER 1 (BEM)
+
+  // 7. GUNADARMA MENGABDI (VOLUNTEER)
   {
     id: 7,
-    // role: "Koordinator Acara",
-    role: "Event Coordinator",
-    company: "BEM FTI Charity Concert",
-    // period: "Agustus 2024",
-    period: "August 2024",
+    // role: "Divisi Perlengkapan Pembangunan",
+    role: "Construction Logistics Division",
+    company: "Gunadarma Mengabdi 10",
+    // period: "Februari 2025",
+    period: "Feb 2025",
     type: "Volunteer",
     desc: [
-      // "Mengatur rundown acara konser amal dengan 500+ penonton.",
-      "Managing charity concert rundown with 500+ audience.",
-      // "Berkoordinasi dengan pengisi acara dan vendor sound system.",
-      "Coordinating with performers and sound system vendors.",
-      // "Memastikan acara berjalan sesuai waktu yang ditentukan."
-      "Ensuring the event runs according to the specified schedule."
+      // "Menjadi penanggung jawab logistik pembangunan sarana edukasi di lokasi pengabdian.",
+      "Person in charge of logistics for educational facility construction at the service location.",
+      // "Mengatur distribusi alat dan material pembangunan 20+ alat pembangunan.",
+      "Managing the distribution of over 20 types of construction tools and materials.",
+      // "Mengawasi barang dan perlengkapan selalu terjaga keamanannya.",
+      "Ensuring the security and maintenance of all field equipment."
     ],
-    color: "from-teal-400 to-emerald-600" // Warna Baru Hijau Teal
+    color: "from-orange-400 to-amber-500"
   },
-  // 8. DUMMY VOLUNTEER 2 (BEM)
+
+  // 8. ENGINEERING CUP (VOLUNTEER)
   {
     id: 8,
-    // role: "Staff Humas",
-    role: "Public Relations Staff",
-    company: "FTI Leadership Training",
-    // period: "Juni 2024",
-    period: "June 2024",
+    // role: "Divisi Perlengkapan",
+    role: "Logistics Division",
+    company: "Engineering Cup x Ruang Ekspresi",
+    // period: "Juli 2025",
+    period: "July 2025",
     type: "Volunteer",
     desc: [
-      // "Menghubungi pemateri nasional untuk seminar kepemimpinan.",
-      "Contacting national speakers for leadership seminars.",
-      // "Mengelola registrasi peserta dan penyebaran undangan.",
-      "Managing participant registration and invitation distribution.",
-      // "Menjadi MC selama sesi seminar berlangsung."
-      "Serving as MC during the seminar session."
+      // "Menjadi penanggung jawab dalam penyiapan dan pengawasan perlengkapan untuk perlombaan.",
+      "Responsible for preparing and supervising equipment for various competitions.",
+      // "Mengurus pembelian dan pendistribusian piala sebagai bentuk apresiasi kepada para pemenang lomba.",
+      "Managing the procurement and distribution of trophies for competition winners.",
+      // "Berkoordinasi dengan panitia teknis lainnya untuk kelancaran acara.",
+      "Coordinating with other technical committees to ensure event smoothness."
     ],
-    color: "from-violet-500 to-fuchsia-500" // Warna Baru Ungu Fuchsia
-  }
+    color: "from-green-500 to-teal-500"
+  },
+
+  // 9. PKKMB FTI UG (VOLUNTEER)
+  {
+    id: 9,
+    // role: "Divisi PK (Penanggung Jawab Kelompok)",
+    role: "Group Leader (PK Division)",
+    company: "PKKMB FTI UG 2024",
+    // period: "September 2024",
+    period: "Sept 2024",
+    type: "Volunteer",
+    desc: [
+      // "Memimpin 1 kelompok mahasiswa baru (20–25 peserta).",
+      "Leading a group of 20–25 new students during orientation.",
+      // "Mengatur komunikasi kelompok, pengarahan teknis, dan kontrol keaktifan selama 1 hari kegiatan.",
+      "Managing group communication, technical direction, and activity monitoring throughout the event."
+    ],
+    color: "from-blue-400 to-cyan-400"
+  },
+
+  // 10. ITSOCIART 4.0 (VOLUNTEER)
+  {
+    id: 10,
+    // role: "Divisi Perlengkapan",
+    role: "Logistics Division",
+    company: "ITSOCIART 4.0",
+    // period: "Juli 2024",
+    period: "July 2024",
+    type: "Volunteer",
+    desc: [
+      // "Menyiapkan dan mendistribusikan perlengkapan acara seni dan lomba antar fakultas.",
+      "Preparing and distributing equipment for inter-faculty art and competition events.",
+      // "Berhasil menyiapkan 40+ unit alat perlombaan sebelum waktu pelaksanaan.",
+      "Successfully securing 40+ competition tools prior to the event execution."
+    ],
+    color: "from-rose-400 to-pink-500"
+  },
+
+  // 11. LIST SINGKAT LAINNYA (DIGABUNG BIAR RAPI)
+  {
+    id: 11,
+    role: "Logistics Division",
+    company: "PKKMB FTI UG 2025",
+    period: "Sep 2025",
+    type: "Volunteer",
+    desc: [
+      // "PKKMB 2025 - Divisi perlengkapan",
+      "PKKMB 2025: Handling logistics and venue preparation for new student orientation.",
+      // "LDKO BEM FTI - Divisi perlengkapan",
+      //"LDKO BEM FTI: Managing equipment for the Basic Leadership Training of the Student Executive Board."
+    ],
+    color: "from-gray-500 to-slate-600"
+  },
+
+    // 12. PERLAP LDKO BEM FTI UG 25/26
+  {
+    id: 12,
+    role: "Logistics Division",
+    company: "BEM FTI Universitas Gunadarma",
+    period: "Nov 2025",
+    type: "Volunteer",
+    desc: [
+      // "PKKMB 2025 - Divisi perlengkapan",
+      //"PKKMB 2025: Handling logistics and venue preparation for new student orientation.",
+
+      // "LDKO BEM FTI - Divisi perlengkapan",
+      "LDKO BEM FTI: Managing equipment for the Basic Leadership Training of the Student Executive Board."
+    ],
+    color: "from-blue-500 to-slate-600"
+  },
 ];
 
 const Experience = () => {
   const [selectedId, setSelectedId] = useState(null);
-  const [showAll, setShowAll] = useState(false); // State untuk Show More
+  const [showAll, setShowAll] = useState(false); 
 
-  // Tentukan berapa item yang ditampilkan (3 Default, atau Semua jika showAll true)
+  // Tentukan berapa item yang ditampilkan
   const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
 
   return (
@@ -216,7 +295,7 @@ const Experience = () => {
                                 </span>
                             </div>
 
-                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E1FF] transition-colors">
+                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E1FF] transition-colors line-clamp-2">
                                 {exp.role}
                             </h3>
                             <p className="text-sm text-gray-300 mb-4">{exp.company}</p>

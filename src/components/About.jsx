@@ -13,7 +13,7 @@ const About = () => {
       {/* 1. BACKGROUND (Static - Ringan & GPU Accelerated) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
-            src="/assets/ancient_house2.png" 
+            src="/assets/ancient_house2.webp" 
             className="w-full h-full object-cover opacity-10 mix-blend-luminosity will-change-transform" 
             alt="Background" 
         />
@@ -132,7 +132,8 @@ const About = () => {
 
                                 {/* Foto Utama */}
                                 <img 
-                                    src="/assets/profile_rb.png" 
+                                    loading="lazy"
+                                    src="/assets/profile/profile_rb.webp" 
                                     alt="Raffael Fidhera" 
                                     // Pake CSS drop-shadow biasa, jangan filter SVG yang berat
                                     className="w-[240px] md:w-[300px] h-auto object-contain relative z-10 drop-shadow-lg" 
