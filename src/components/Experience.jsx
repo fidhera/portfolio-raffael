@@ -1,93 +1,172 @@
 import { useState } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBriefcase, FaCalendarAlt, FaTimes, FaChevronRight } from "react-icons/fa";
+import { FaBriefcase, FaCalendarAlt, FaTimes, FaChevronRight, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
 
-// --- DATA PENGALAMAN (DARI CV) ---
+// --- DATA PENGALAMAN (DARI CV & DUMMY) ---
 const experiences = [
+  // 1. ASLAB SISFO (PRIORITY)
   {
-    id: 1,
-    role: "Asisten Lab HPC",
+    id: 3, // ID Asli
+    // role: "Asisten Lab Sistem Informasi",
+    role: "Information Systems Lab Assistant",
     company: "Universitas Gunadarma",
-    period: "Sept 2024 - Nov 2024",
+    // period: "Maret 2025 - Sekarang",
+    period: "March 2025 - Present",
     type: "Work",
     desc: [
-      "Mengelola dan mendukung kegiatan pembelajaran pemrograman High Performance Computing (HPC).",
-      "Memberikan asistensi teknis real-time kepada mahasiswa dalam simulasi berbasis HPC.",
-      "Melakukan troubleshooting masalah teknis melalui platform live chat."
-    ],
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    id: 2,
-    role: "Staff Adkesma",
-    company: "BEM FTI Universitas Gunadarma",
-    period: "Nov 2024 - Sekarang",
-    type: "Organization",
-    desc: [
-      "Menangani advokasi dan kesejahteraan mahasiswa FTI dengan fokus pada layanan akademik.",
-      "Menjadi jembatan komunikasi aktif antara mahasiswa dan birokrasi kampus.",
-      "Memastikan pemenuhan hak dan fasilitas mahasiswa secara optimal."
-    ],
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    id: 3,
-    role: "Asisten Lab Sistem Informasi",
-    company: "Universitas Gunadarma",
-    period: "Maret 2025 - Sekarang",
-    type: "Work",
-    desc: [
-      "Bertanggung jawab sebagai Tutor Praktikum untuk mata kuliah terkait Sistem Informasi.",
-      "Membantu dosen dalam pengelolaan kelas dan penilaian praktikum.",
-      "Mengembangkan materi pembelajaran praktis untuk mahasiswa."
+      // "Bertanggung jawab sebagai Tutor Praktikum untuk mata kuliah terkait Sistem Informasi.",
+      "Responsible as a Practicum Tutor for Information Systems related courses.",
+      // "Membantu dosen dalam pengelolaan kelas dan penilaian praktikum.",
+      "Assisting lecturers in class management and practicum grading.",
+      // "Mengembangkan materi pembelajaran praktis untuk mahasiswa."
+      "Developing practical learning materials for students."
     ],
     color: "from-cyan-500 to-blue-600"
   },
+  // 2. BEM FTI (PRIORITY)
+  {
+    id: 2,
+    // role: "Staff Adkesma",
+    role: "Student Advocacy Staff",
+    company: "BEM FTI Universitas Gunadarma",
+    // period: "Nov 2024 - Sekarang",
+    period: "Nov 2024 - Present",
+    type: "Organization",
+    desc: [
+      // "Menangani advokasi dan kesejahteraan mahasiswa FTI dengan fokus pada layanan akademik.",
+      "Handling advocacy and welfare of FTI students with a focus on academic services.",
+      // "Menjadi jembatan komunikasi aktif antara mahasiswa dan birokrasi kampus.",
+      "Acting as an active communication bridge between students and campus bureaucracy.",
+      // "Memastikan pemenuhan hak dan fasilitas mahasiswa secara optimal."
+      "Ensuring optimal fulfillment of student rights and facilities."
+    ],
+    color: "from-purple-500 to-pink-500"
+  },
+  // 3. SXC SUMMIT (PRIORITY)
   {
     id: 4,
+    // role: "IT Division (Fullstack)",
     role: "IT Division (Fullstack)",
     company: "StudentsxCEOs Summit",
-    period: "Juli 2025 - Sekarang",
+    // period: "Juli 2025 - Sekarang",
+    period: "July 2025 - Present",
     type: "Committee",
     desc: [
-      "Membangun antarmuka (UI/UX) Website Event menggunakan Figma.",
-      "Developing backend sistem pendaftaran & tiket dengan Laravel & MySQL.",
-      "Mengelola traffic event hingga 1000+ user dengan performa stabil."
+      // "Membangun antarmuka (UI/UX) Website Event menggunakan Figma.",
+      "Building Event Website interface (UI/UX) using Figma.",
+      // "Developing backend sistem pendaftaran & tiket dengan Laravel & MySQL.",
+      "Developing registration & ticketing backend system with Laravel & MySQL.",
+      // "Mengelola traffic event hingga 1000+ user dengan performa stabil."
+      "Managing event traffic of up to 1000+ users with stable performance."
     ],
     color: "from-emerald-400 to-cyan-500"
   },
+  // --- SHOW MORE ITEMS START HERE ---
+  // 4. ASLAB HPC
+  {
+    id: 1,
+    // role: "Asisten Lab HPC",
+    role: "HPC Lab Assistant",
+    company: "Universitas Gunadarma",
+    // period: "Sept 2024 - Nov 2024",
+    period: "Sept 2024 - Nov 2024",
+    type: "Work",
+    desc: [
+      // "Mengelola dan mendukung kegiatan pembelajaran pemrograman High Performance Computing (HPC).",
+      "Managing and supporting High Performance Computing (HPC) programming learning activities.",
+      // "Memberikan asistensi teknis real-time kepada mahasiswa dalam simulasi berbasis HPC.",
+      "Providing real-time technical assistance to students in HPC-based simulations.",
+      // "Melakukan troubleshooting masalah teknis melalui platform live chat."
+      "Troubleshooting technical issues via live chat platform."
+    ],
+    color: "from-blue-500 to-cyan-500"
+  },
+  // 5. GUNADARMA MENGABDI
   {
     id: 5,
-    role: "Logistik Pembangunan",
+    // role: "Logistik Pembangunan",
+    role: "Construction Logistics",
     company: "Gunadarma Mengabdi 10",
-    period: "Februari 2025",
+    // period: "Februari 2025",
+    period: "February 2025",
     type: "Volunteer",
     desc: [
-      "Penanggung jawab logistik pembangunan sarana edukasi di lokasi pengabdian.",
-      "Mengelola distribusi 20+ jenis alat dan material konstruksi.",
-      "Mengawasi keamanan aset dan kelancaran teknis di lapangan."
+      // "Penanggung jawab logistik pembangunan sarana edukasi di lokasi pengabdian.",
+      "Person in charge of logistics for educational facility construction at the service location.",
+      // "Mengelola distribusi 20+ jenis alat dan material konstruksi.",
+      "Managing distribution of 20+ types of construction tools and materials.",
+      // "Mengawasi keamanan aset dan kelancaran teknis di lapangan."
+      "Overseeing asset security and technical smooth operation in the field."
     ],
     color: "from-orange-400 to-red-500"
   },
+  // 6. TECH CAREER EXPO
   {
     id: 6,
-    role: "Wakil Ketua Media Kreatif",
+    // role: "Wakil Ketua Media Kreatif",
+    role: "Vice Head of Creative Media",
     company: "TechCareer Expo 2025",
-    period: "Mei 2025",
+    // period: "Mei 2025",
+    period: "May 2025",
     type: "Volunteer",
     desc: [
-      "Memimpin tim desain memproduksi 10+ konten visual dan backdrop.",
-      "Koordinasi produksi video highlight & promosi (Canva & CapCut).",
-      "Mengatur timeline publikasi media sosial selama 4 minggu pre-event."
+      // "Memimpin tim desain memproduksi 10+ konten visual dan backdrop.",
+      "Leading design team producing 10+ visual contents and backdrops.",
+      // "Koordinasi produksi video highlight & promosi (Canva & CapCut).",
+      "Coordinating highlight & promotional video production (Canva & CapCut).",
+      // "Mengatur timeline publikasi media sosial selama 4 minggu pre-event."
+      "Managing social media publication timeline for 4 weeks pre-event."
     ],
     color: "from-indigo-400 to-purple-500"
+  },
+  // 7. DUMMY VOLUNTEER 1 (BEM)
+  {
+    id: 7,
+    // role: "Koordinator Acara",
+    role: "Event Coordinator",
+    company: "BEM FTI Charity Concert",
+    // period: "Agustus 2024",
+    period: "August 2024",
+    type: "Volunteer",
+    desc: [
+      // "Mengatur rundown acara konser amal dengan 500+ penonton.",
+      "Managing charity concert rundown with 500+ audience.",
+      // "Berkoordinasi dengan pengisi acara dan vendor sound system.",
+      "Coordinating with performers and sound system vendors.",
+      // "Memastikan acara berjalan sesuai waktu yang ditentukan."
+      "Ensuring the event runs according to the specified schedule."
+    ],
+    color: "from-teal-400 to-emerald-600" // Warna Baru Hijau Teal
+  },
+  // 8. DUMMY VOLUNTEER 2 (BEM)
+  {
+    id: 8,
+    // role: "Staff Humas",
+    role: "Public Relations Staff",
+    company: "FTI Leadership Training",
+    // period: "Juni 2024",
+    period: "June 2024",
+    type: "Volunteer",
+    desc: [
+      // "Menghubungi pemateri nasional untuk seminar kepemimpinan.",
+      "Contacting national speakers for leadership seminars.",
+      // "Mengelola registrasi peserta dan penyebaran undangan.",
+      "Managing participant registration and invitation distribution.",
+      // "Menjadi MC selama sesi seminar berlangsung."
+      "Serving as MC during the seminar session."
+    ],
+    color: "from-violet-500 to-fuchsia-500" // Warna Baru Ungu Fuchsia
   }
 ];
 
 const Experience = () => {
   const [selectedId, setSelectedId] = useState(null);
+  const [showAll, setShowAll] = useState(false); // State untuk Show More
+
+  // Tentukan berapa item yang ditampilkan (3 Default, atau Semua jika showAll true)
+  const visibleExperiences = showAll ? experiences : experiences.slice(0, 3);
 
   return (
     <section id="experience" className="relative w-full px-4 md:px-20 py-20 bg-[#0F0041] overflow-hidden">
@@ -104,48 +183,75 @@ const Experience = () => {
         </div>
 
         {/* --- GRID KARTU KECIL --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-            {experiences.map((exp) => (
-                <motion.div
-                    layoutId={exp.id} // ID untuk animasi morphing
-                    key={exp.id}
-                    onClick={() => setSelectedId(exp.id)}
-                    className="group relative cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                >
-                    {/* Card Body */}
-                    <div className="h-full bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-colors duration-300 relative overflow-hidden">
-                        
-                        {/* Gradient Line di Atas */}
-                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color}`}></div>
-                        
-                        <div className="flex justify-between items-start mb-4">
-                            <div className={`p-3 rounded-lg bg-gradient-to-br ${exp.color} bg-opacity-20`}>
-                                <FaBriefcase className="text-white text-xl" />
+        <motion.div 
+            layout 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10"
+        >
+            <AnimatePresence>
+                {visibleExperiences.map((exp) => (
+                    <motion.div
+                        layoutId={exp.id} 
+                        key={exp.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={() => setSelectedId(exp.id)}
+                        className="group relative cursor-pointer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                    >
+                        {/* Card Body */}
+                        <div className="h-full bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/10 transition-colors duration-300 relative overflow-hidden">
+                            
+                            {/* Gradient Line di Atas */}
+                            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color}`}></div>
+                            
+                            <div className="flex justify-between items-start mb-4">
+                                <div className={`p-3 rounded-lg bg-gradient-to-br ${exp.color} bg-opacity-20`}>
+                                    <FaBriefcase className="text-white text-xl" />
+                                </div>
+                                <span className="text-xs font-mono text-gray-400 border border-white/10 px-2 py-1 rounded-full">
+                                    {exp.type}
+                                </span>
                             </div>
-                            <span className="text-xs font-mono text-gray-400 border border-white/10 px-2 py-1 rounded-full">
-                                {exp.type}
-                            </span>
-                        </div>
 
-                        <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E1FF] transition-colors">
-                            {exp.role}
-                        </h3>
-                        <p className="text-sm text-gray-300 mb-4">{exp.company}</p>
+                            <h3 className="text-xl font-bold text-white mb-1 group-hover:text-[#00E1FF] transition-colors">
+                                {exp.role}
+                            </h3>
+                            <p className="text-sm text-gray-300 mb-4">{exp.company}</p>
 
-                        <div className="flex items-center gap-2 text-xs text-gray-500 mt-auto">
-                            <FaCalendarAlt />
-                            <span>{exp.period}</span>
-                        </div>
+                            <div className="flex items-center gap-2 text-xs text-gray-500 mt-auto">
+                                <FaCalendarAlt />
+                                <span>{exp.period}</span>
+                            </div>
 
-                        {/* Icon Arrow (Hanya hiasan) */}
-                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
-                            <FaChevronRight className="text-[#00E1FF]" />
+                            {/* Icon Arrow (Hiasan) */}
+                            <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                                <FaChevronRight className="text-[#00E1FF]" />
+                            </div>
                         </div>
-                    </div>
-                </motion.div>
-            ))}
+                    </motion.div>
+                ))}
+            </AnimatePresence>
+        </motion.div>
+
+        {/* --- TOMBOL SHOW MORE / LESS --- */}
+        <div className="mt-12 flex justify-center z-20 relative">
+            <button 
+                onClick={() => setShowAll(!showAll)}
+                className="flex items-center gap-2 px-6 py-3 bg-[#00E1FF]/10 border border-[#00E1FF]/30 hover:bg-[#00E1FF]/20 text-[#00E1FF] rounded-full transition-all font-medium"
+            >
+                {showAll ? (
+                    <>
+                        Show Less <FaChevronUp />
+                    </>
+                ) : (
+                    <>
+                        Show More Experiences ({experiences.length - 3} Hidden) <FaChevronDown />
+                    </>
+                )}
+            </button>
         </div>
 
         {/* --- POPUP / MODAL DETAIL --- */}
@@ -153,7 +259,7 @@ const Experience = () => {
             {selectedId && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
                     
-                    {/* Backdrop Gelap (Blur) */}
+                    {/* Backdrop Gelap */}
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -162,10 +268,10 @@ const Experience = () => {
                         className="absolute inset-0 bg-black/60 backdrop-blur-md cursor-pointer"
                     />
 
-                    {/* Kartu Detail yang Membesar */}
+                    {/* Kartu Detail */}
                     <motion.div 
-                        layoutId={selectedId} // Koneksi animasi ke kartu kecil
-                        className="relative w-full max-w-2xl bg-[#0F0041] border border-[#00E1FF]/30 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,225,255,0.3)] z-50"
+                        layoutId={selectedId} 
+                        className="relative w-full max-w-2xl bg-[#0F0041] border border-[#00E1FF]/30 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(0,225,255,0.3)] z-50 max-h-[90vh] overflow-y-auto"
                     >
                         {/* Close Button */}
                         <button 
@@ -181,7 +287,7 @@ const Experience = () => {
                                 return (
                                     <div key={exp.id} className="flex flex-col">
                                         
-                                        {/* Header Modal dengan Gradient */}
+                                        {/* Header Modal */}
                                         <div className={`relative p-8 bg-gradient-to-r ${exp.color}`}>
                                             <div className="relative z-10">
                                                 <h2 className="text-3xl font-black text-white mb-2">{exp.role}</h2>

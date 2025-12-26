@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll'; // Import Link untuk scroll halus
+import { Link } from 'react-scroll';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -26,7 +26,6 @@ const Navbar = () => {
   ];
 
   return (
-    // Z-INDEX 100 PENTING AGAR SELALU DI ATAS ELEMENT LAIN
     <nav className="fixed top-4 left-0 w-full flex justify-center z-[100] px-4">
       
       {/* --- CONTAINER UTAMA --- */}
@@ -35,8 +34,12 @@ const Navbar = () => {
           relative flex justify-between items-center 
           transition-all duration-300 ease-in-out
           ${isOpen ? 'rounded-2xl' : 'rounded-full'}
-          ${scrolled || isOpen ? 'bg-[#050505]/80 border-white/10' : 'bg-white/5 border-white/20'}
-          backdrop-blur-md border shadow-lg
+          
+          /* --- BAGIAN INI YANG DIPERBAIKI --- */
+          /* Menggunakan #0F0041 (Biru Tema) bukan Hitam, dan Opacity /70 biar tetap Glassy */
+          ${scrolled || isOpen ? 'bg-[#0F0041]/70 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' : 'bg-white/5 border-white/20'}
+          
+          backdrop-blur-md border 
           w-full max-w-[1200px] h-[60px] px-6 md:px-8
         `}
       >
@@ -51,7 +54,7 @@ const Navbar = () => {
             My Portfolio<span className="text-[#00E1FF]">.</span>
         </Link>
 
-        {/* 2. DESKTOP MENU (Hidden di HP) */}
+        {/* 2. DESKTOP MENU */}
         <ul className="hidden md:flex gap-8 font-poppins text-sm text-gray-300">
           {navLinks.map((item) => (
             <li key={item.name}>
@@ -59,7 +62,7 @@ const Navbar = () => {
                 to={item.to} 
                 smooth={true} 
                 duration={500} 
-                offset={-100} // Agar tidak tertutup navbar saat scroll stop
+                offset={-100} 
                 className="hover:text-[#00E1FF] cursor-pointer transition-colors font-medium hover:drop-shadow-[0_0_8px_rgba(0,225,255,0.5)]"
               >
                 {item.name}
@@ -68,7 +71,7 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* 3. MOBILE HAMBURGER ICON (Visible di HP) */}
+        {/* 3. MOBILE HAMBURGER ICON */}
         <div className="md:hidden">
             <button 
                 onClick={() => setIsOpen(!isOpen)}
@@ -86,7 +89,8 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-[70px] left-0 w-full bg-[#1a1a2e]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl md:hidden flex flex-col gap-4 items-center"
+                    // Background Mobile juga disamakan Biru Tua (#0F0041)
+                    className="absolute top-[70px] left-0 w-full bg-[#0F0041]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl md:hidden flex flex-col gap-4 items-center"
                 >
                     {navLinks.map((item) => (
                         <Link
@@ -95,7 +99,7 @@ const Navbar = () => {
                             smooth={true}
                             duration={500}
                             offset={-100}
-                            onClick={() => setIsOpen(false)} // Tutup menu saat diklik
+                            onClick={() => setIsOpen(false)} 
                             className="text-gray-300 text-lg font-medium hover:text-[#00E1FF] w-full text-center py-2 border-b border-white/5 last:border-none"
                         >
                             {item.name}
