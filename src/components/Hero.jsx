@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { FaGithub, FaInstagram, FaLinkedin, FaReact, FaJs, FaNodeJs, FaMusic } from "react-icons/fa"; // Added FaMusic
+import { FaGithub, FaInstagram, FaLinkedin, FaReact, FaJs, FaNodeJs, FaMusic } from "react-icons/fa"; 
 import { SiTailwindcss } from "react-icons/si";
 
 // --- KONFIGURASI TEXT ---
@@ -57,7 +57,7 @@ const FloatingElement = ({ src, delay, x, y, size }) => {
     return (
         <motion.img 
             src={src}
-            className="absolute z-10 opacity-40 pointer-events-none hidden md:block will-change-transform transform-gpu" // Optimization
+            className="absolute z-10 opacity-40 pointer-events-none hidden md:block will-change-transform transform-gpu" 
             style={{ width: size, top: y, left: x }}
             initial={{ y: 0, opacity: 0 }}
             animate={{ 
@@ -82,7 +82,7 @@ const TechLine = ({ side }) => {
         <div className={`absolute ${positionClass} top-1/2 -translate-y-1/2 h-[60vh] hidden md:flex flex-col items-center justify-center gap-4 z-20`}>
             <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#00E1FF]/30 to-transparent relative overflow-hidden">
                 <motion.div 
-                    className="absolute top-0 left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-[#00E1FF] to-transparent will-change-transform" // Optimization
+                    className="absolute top-0 left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-[#00E1FF] to-transparent will-change-transform"
                     animate={{ top: ["-20%", "120%"] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: side === 'left' ? 0 : 2 }}
                 />
@@ -109,7 +109,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-primary px-4 md:px-20 pt-20 transform-gpu"> {/* Optimization: transform-gpu */}
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-primary px-4 md:px-20 pt-20 transform-gpu">
       
       {/* --- AUDIO ELEMENT (Hidden) --- */}
       <audio ref={audioRef} loop>
@@ -118,32 +118,34 @@ const Hero = () => {
 
       {/* =========================================
           1. BACKGROUND LAYER 
-         ========================================= */}
+          ========================================= */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Gambar Rumah Kuno */}
+        {/* Gambar Rumah Kuno - OPTIMIZED FOR LCP */}
         <img 
             src="/assets/ancient_house.webp" 
-            className="w-full h-full object-cover opacity-30 mix-blend-luminosity will-change-transform" // Optimization
+            fetchpriority="high" // <--- DITAMBAHKAN (Prioritas Utama)
+            // loading="lazy" <--- DIHAPUS (Biar load instan)
+            className="w-full h-full object-cover opacity-30 mix-blend-luminosity will-change-transform" 
             alt="Background" 
         />
         {/* Vignette & Grading */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0F0041_90%)]"></div>
         <div className="absolute inset-0 bg-[#0F0041]/70 mix-blend-multiply"></div>
 
-        {/* Efek Atmosfer - OPTIMIZED: Slower animation & will-change */}
+        {/* Efek Atmosfer */}
         <motion.div 
-            className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] will-change-transform" // Reduced blur slightly for performance
+            className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[100px] will-change-transform" 
             animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         />
         <motion.div 
-            className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#00E1FF]/20 rounded-full blur-[100px] will-change-transform" // Reduced blur slightly for performance
+            className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-[#00E1FF]/20 rounded-full blur-[100px] will-change-transform" 
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
-      {/* 2. FLOATING ICONS */}
+      {/* 2. FLOATING ICONS (TETAP PNG) */}
       <FloatingElement src="/assets/vscode_1.png" size="60px" x="5%" y="20%" delay={0} />
       <FloatingElement src="/assets/vscode_2.png" size="50px" x="90%" y="15%" delay={1.5} />
       <FloatingElement src="/assets/vscode_3.png" size="40px" x="10%" y="80%" delay={0.5} />
@@ -155,7 +157,7 @@ const Hero = () => {
 
       {/* =========================================
           4. KONTEN UTAMA
-         ========================================= */}
+          ========================================= */}
       <div className="z-10 w-full max-w-7xl flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-0">
         
         {/* --- KOLOM KIRI: TEXT & BUTTONS --- */}
@@ -230,13 +232,6 @@ const Hero = () => {
                     </div>
                 ))}
             </div>
-
-            {/* SOCIAL ICONS */}
-            {/* <div className="flex gap-6 items-center">
-                <a href="#" className="text-2xl text-gray-400 hover:text-white hover:scale-125 transition-transform duration-300"><FaGithub /></a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-pink-500 hover:scale-125 transition-transform duration-300"><FaInstagram /></a>
-                <a href="#" className="text-2xl text-gray-400 hover:text-blue-500 hover:scale-125 transition-transform duration-300"><FaLinkedin /></a>
-            </div> */}
         </motion.div>
 
         {/* --- KOLOM KANAN: FOTO PROFIL --- */}
@@ -252,7 +247,8 @@ const Hero = () => {
             {/* Foto Profil */}
             <div className="relative">
                 <img 
-                    loading="lazy"
+                    // loading="lazy" <--- DIHAPUS (Penting biar tidak telat muncul)
+                    fetchpriority="high" // <--- DITAMBAHKAN (Biar prioritas download)
                     src="/assets/profile/profile.webp" 
                     alt="Raffael Fidhera" 
                     className="w-[280px] md:w-[320px] object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative z-10 hover:scale-[1.02] transition-transform duration-500" 
@@ -266,7 +262,7 @@ const Hero = () => {
 
       </div>
 
-      {/* 5. GRID FLOOR - Optimized opacity and render */}
+      {/* 5. GRID FLOOR */}
       <div className="absolute bottom-0 w-full h-[150px] z-0 pointer-events-none opacity-60">
           <div className="w-full h-full bg-gradient-to-t from-[#0F0041] via-transparent to-transparent absolute top-0 z-20"></div>
           <div 
