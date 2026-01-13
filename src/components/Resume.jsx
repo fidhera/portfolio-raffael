@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import { FaDownload, FaFilePdf, FaBriefcase, FaGraduationCap, FaCode, FaMedal, FaUsers, FaLayerGroup, FaEye } from "react-icons/fa";
+// MENAMBAHKAN FaImages untuk icon tombol baru
+import { FaDownload, FaFilePdf, FaBriefcase, FaGraduationCap, FaCode, FaMedal, FaUsers, FaLayerGroup, FaEye, FaImages } from "react-icons/fa";
 
 const Resume = () => {
   return (
@@ -10,27 +11,24 @@ const Resume = () => {
           1. BACKGROUND LAYER (OPTIMIZED)
          ========================================= */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Gambar Rumah - Tambahkan transform-gpu agar dirender GPU */}
         <img 
             src="/assets/ancient_house.png" 
             className="w-full h-full object-cover opacity-30 mix-blend-luminosity transform-gpu will-change-transform" 
             alt="Background" 
         />
         
-        {/* Gradient Static - Tidak perlu dianimasikan */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0F0041_90%)]"></div>
         <div className="absolute inset-0 bg-[#0F0041]/70 mix-blend-multiply"></div>
 
-        {/* Efek Atmosfer - OPTIMASI: Durasi diperlambat & Will-Change */}
         <motion.div 
             className="absolute top-[10%] left-[10%] w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] will-change-transform"
             animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }} // Diperlambat biar ringan
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }} 
         />
         <motion.div 
             className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-[#00E1FF]/10 rounded-full blur-[100px] will-change-transform"
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }} // Diperlambat biar ringan
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }} 
         />
       </div>
 
@@ -53,13 +51,12 @@ const Resume = () => {
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} // PENTING: Animasi cuma sekali pas discroll, biar ga berat
+        viewport={{ once: true }} 
         transition={{ duration: 0.8 }}
         className="relative z-10 w-full max-w-5xl"
       >
         <div className="relative p-[2px] rounded-3xl bg-gradient-to-br from-[#00E1FF]/50 via-transparent to-[#00FFA3]/50">
             
-            {/* Inner Glass Card - Kurangi Blur jika masih lag (backdrop-blur-xl -> md) */}
             <div className="bg-[#1a1a2e]/90 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/5 relative overflow-hidden group transform-gpu">
                 
                 {/* Dekorasi HUD Statis */}
@@ -74,11 +71,10 @@ const Resume = () => {
                     <div className="w-full md:w-1/3 flex flex-col items-center justify-center">
                         <div className="relative w-48 h-48 flex items-center justify-center bg-[#00E1FF]/10 rounded-full border border-[#00E1FF]/30 shadow-[0_0_40px_rgba(0,225,255,0.2)] mb-6 transform-gpu">
                             <FaFilePdf className="text-7xl text-[#00E1FF] drop-shadow-lg" />
-                            {/* Orbiting Dot - Gunakan SVG circle biar lebih ringan dari div border */}
                             <motion.div 
                                 className="absolute inset-0 rounded-full border border-dashed border-[#00E1FF]/40"
                                 animate={{ rotate: 360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }} // Diperlambat
+                                transition={{ duration: 20, repeat: Infinity, ease: "linear" }} 
                                 style={{ willChange: "transform" }}
                             />
                         </div>
@@ -89,7 +85,7 @@ const Resume = () => {
                         </div>
                     </div>
 
-                    {/* Kanan: Stats */}
+                    {/* Kanan: Stats & Buttons */}
                     <div className="w-full md:w-2/3 text-center md:text-left">
                         <h3 className="text-3xl font-bold text-white mb-2">Raffael Fidhera Yahya</h3>
                         <p className="text-gray-400 mb-8 font-mono text-sm border-b border-white/10 pb-4 inline-block">
@@ -105,33 +101,46 @@ const Resume = () => {
                             <StatCard icon={<FaLayerGroup className="text-cyan-400" />} label="Tech Stack" value="15+ Tools" />
                         </div>
 
-                        <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+                        {/* --- BAGIAN TOMBOL (UPDATED) --- */}
+                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                            {/* Tombol 1: Download CV (Utama) */}
                              <motion.a 
                                 href="/assets/Doc/CV ats updatee.pdf" 
                                 download="CV_Raffael_Fidhera.pdf"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center justify-center gap-3 px-8 py-3 bg-gradient-to-r from-[#00E1FF] to-[#00FFA3] text-[#050505] font-bold rounded-full shadow-[0_0_20px_rgba(0,225,255,0.4)] hover:shadow-[0_0_30px_rgba(0,225,255,0.6)] transition-all cursor-pointer"
+                                className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00E1FF] to-[#00FFA3] text-[#050505] font-bold rounded-full shadow-[0_0_20px_rgba(0,225,255,0.4)] hover:shadow-[0_0_30px_rgba(0,225,255,0.6)] transition-all cursor-pointer text-sm"
                             >
                                 <FaDownload /> Download CV
                             </motion.a>
                             
+                            {/* Tombol 2: Preview CV (Secondary - Biru) */}
                             <motion.button 
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center justify-center gap-3 px-8 py-3 border border-[#00E1FF]/50 text-[#00E1FF] font-bold rounded-full hover:bg-[#00E1FF]/10 transition-all cursor-pointer"
+                                className="flex items-center justify-center gap-2 px-6 py-3 border border-[#00E1FF]/50 text-[#00E1FF] font-bold rounded-full hover:bg-[#00E1FF]/10 transition-all cursor-pointer text-sm"
                                 onClick={() => window.open("/assets/Doc/CV ats updatee.pdf", "_blank")}
                             >
-                                <FaEye className="text-lg" /> Preview
+                                <FaEye className="text-lg" /> Preview CV
+                            </motion.button>
+
+                            {/* Tombol 3: Portfolio Slide (NEW - Hijau agar variatif) */}
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="flex items-center justify-center gap-2 px-6 py-3 border border-[#00FFA3]/50 text-[#00FFA3] font-bold rounded-full hover:bg-[#00FFA3]/10 transition-all cursor-pointer text-sm"
+                                onClick={() => window.open("/assets/Doc/Portofolio Slide new.pdf", "_blank")}
+                            >
+                                <FaImages className="text-lg" /> See Portfolio
                             </motion.button>
                         </div>
                     </div>
                 </div>
 
-                {/* Hiasan Scan Line - REVISI: Pake Translate Y (GPU) bukan Top (CPU) */}
+                {/* Hiasan Scan Line */}
                 <motion.div 
                     className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#00E1FF] to-transparent opacity-50 will-change-transform"
-                    animate={{ y: ["0%", "500px", "0%"] }} // Asumsi tinggi card sekitar 500px
+                    animate={{ y: ["0%", "500px", "0%"] }} 
                     transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                 />
             </div>
@@ -141,7 +150,6 @@ const Resume = () => {
       {/* 4. GRID FLOOR - OPTIMIZED */}
       <div className="absolute bottom-0 w-full h-[150px] z-0 pointer-events-none opacity-60">
           <div className="w-full h-full bg-gradient-to-t from-[#0F0041] via-transparent to-transparent absolute top-0 z-20"></div>
-          {/* Mengurangi kompleksitas grid pattern */}
           <div 
             className="w-full h-full opacity-20"
             style={{
@@ -156,17 +164,15 @@ const Resume = () => {
 
      {/* GLASS BAR - ANIMATED MARQUEE */}
       <div className="absolute bottom-0 w-full h-16 bg-white/5 backdrop-blur-md border-t border-white/10 z-30 flex items-center overflow-hidden pointer-events-none">
-         {/* Container Gerak */}
          <motion.div 
             className="flex whitespace-nowrap opacity-30 font-mono text-sm text-[#00E1FF]"
-            animate={{ x: ["0%", "-50%"] }} // Bergerak dari 0 sampai setengah panjang container
+            animate={{ x: ["0%", "-50%"] }} 
             transition={{ 
                 repeat: Infinity, 
                 ease: "linear", 
-                duration: 20 // Atur kecepatan di sini (makin besar angka, makin pelan)
+                duration: 20 
             }}
          >
-             {/* --- SET 1 (Teks Asli) --- */}
              <div className="flex gap-10 pr-10">
                 <span>/// SYSTEM_READY ///</span>
                 <span>NEXT_MODULE: RESUME_DATA</span>
@@ -174,8 +180,6 @@ const Resume = () => {
                 <span>SECURE_CONNECTION_ESTABLISHED</span>
                 <span>/// SYSTEM_OPTIMIZED ///</span>
              </div>
-
-             {/* --- SET 2 (Duplikat untuk Looping Mulus) --- */}
              <div className="flex gap-10 pr-10">
                 <span>/// SYSTEM_READY ///</span>
                 <span>NEXT_MODULE: RESUME_DATA</span>
@@ -190,7 +194,7 @@ const Resume = () => {
   );
 };
 
-// Komponen Kecil dipisah biar render lebih cepat
+// Komponen Kecil
 const StatCard = ({ icon, label, value }) => (
     <div className="p-3 bg-white/5 rounded-xl border border-white/10 flex flex-col items-center justify-center hover:bg-white/10 transition-colors">
         <div className="mb-2 text-lg">{icon}</div>

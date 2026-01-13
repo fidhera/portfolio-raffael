@@ -113,7 +113,7 @@ const Hero = () => {
       
       {/* --- AUDIO ELEMENT (Hidden) --- */}
       <audio ref={audioRef} loop>
-        <source src="/assets/music/SZA - Kill Bill (Official Audio).mp3" type="audio/mp3" />
+        <source src="/assets/music/Moonlighting  Retro Poland Original.mp3" type="audio/mp3" />
       </audio>
 
       {/* =========================================
@@ -189,7 +189,7 @@ const Hero = () => {
                 </span>
                 
                 <span className="text-xs font-poppins text-gray-300 tracking-wider uppercase select-none">
-                    {isPlaying ? "Now Playing: Coding Vibes..." : "thriving from promises"}
+                    {isPlaying ? "Compiling Beats..." : "thriving from promises"}
                 </span>
 
                 {/* Mini Visualizer when playing */}
